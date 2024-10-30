@@ -1,6 +1,6 @@
 import localFont from "next/font/local";
-import Navbar from "./components/navbar";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -21,14 +21,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <header>
-        <Navbar />
-      </header>
+      
+        
+      
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
       </body>
+      <Analytics/>
     </html>
   );
 }
