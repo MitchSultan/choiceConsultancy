@@ -1,14 +1,32 @@
 {
-    "routes":[
-        {
-            "src":"/",
-            "dest":"/"
-
-        },
-        {
-            "src":"/",
-            "dest":"/"
-
-        }
+    "version": 2,
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/"
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "/"
+      }
+    ],
+    "functions": {
+      "api/*.js": {
+        "memory": 1024,
+        "maxDuration": 10
+      }
+    },
+    "headers": [
+      {
+        "source": "/(.*)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "s-maxage=1, stale-while-revalidate"
+          }
+        ]
+      }
     ]
-}
+  }
